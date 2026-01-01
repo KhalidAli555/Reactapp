@@ -8,6 +8,12 @@ phases:
       - echo "Installing dependencies"
       - npm install
 
+  pre_build:
+    commands:
+      - echo "Running tests"
+      # React projects usually need CI=true for test mode
+      - CI=true npm test -- --watchAll=false
+
   build:
     commands:
       - echo "Building React app"
